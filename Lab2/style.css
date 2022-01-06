@@ -1,0 +1,73 @@
+.main {
+    background-color: yellow;
+}
+
+span {
+    text-decoration: underline;
+}
+
+#main {
+    width: 100px;
+    height: 50px;
+}
+
+ol {
+    list-style: lower-greek;
+}
+
+li span {
+    position: relative;
+    left: 10px;
+}
+
+.div1 {
+    float: left;
+}
+
+.div2 {
+    float: right;
+}
+
+/* -------------- other  */
+
+* {
+    font-weight: bold;
+}
+
+body > div {
+    background-color: green;
+}
+
+div:not(.main) {
+    padding-top: 10px;
+}
+
+div:nth-child(3) {
+    padding-bottom: 15px;
+}
+
+span[tabindex="1"] {
+    color: pink;
+}
+
+
+
+nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+.p1 {
+    border: 1px solid #000;
+    margin: 20px;
+    padding: 0px;
+}
+
+.p2 {
+    border: 1px solid #000;
+    margin: 0;
+    padding: 20px;
+}

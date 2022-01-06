@@ -1,0 +1,12 @@
+.pic img {
+    width: 500px;
+}
+
+.table table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+form input:not(#submit) {
+    margin: 10px 0px 10px 0px;
+}
