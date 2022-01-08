@@ -170,6 +170,11 @@ pre code span {
     margin: 15px 10px;
 }
 
+#html-source {
+    width: 100%;
+    height: 400px;
+}
+
 /* ----- RESIZING ------ */
 
 @media only screen and (max-width: 1020px) {

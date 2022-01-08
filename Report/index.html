@@ -369,11 +369,6 @@ time, mark, audio, video {
                 </div>
             </div>
         </div>
-
-
-
-
-
         <div id="lab3" class="content-block">
             <div class="side-menu">
                 <ul>
@@ -406,9 +401,381 @@ time, mark, audio, video {
                 <div id="lab3-task2">
                     <h3>Завдання №2</h3>
                     <p>Варіант 9</p>
+                    <iframe id="html-source" src="Task2/index.html" frameborder="0"></iframe>
+                    <pre>
+                        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Task 2&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="main"&gt;
+        &lt;div class="div1"&gt;1&lt;/div&gt;
+        &lt;div class="div2"&gt;2&lt;/div&gt;
+        &lt;div class="div3"&gt;3&lt;/div&gt;
+        &lt;div class="div4"&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code>
+                    </pre>
+                    <pre>
+                        <code>
+.main {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+div {
+    font-size: 1.4em;
+}
+
+.div1 {
+    background-color: blue;
+    order: 2;
+    height: 34%;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div2 {
+    background-color: yellow;
+    order: 1;
+    width: 30%;
+    flex: 1 0 100%;
+    margin-right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div3 {
+    background-color: blue;
+    order: 4;
+    height: 33%;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div4 {
+    background-color: #fff;
+    order: 3;
+    width: 70%;
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+                        </code>
+                    </pre>
                 </div>
                 <div id="lab3-task3">
                     <h3>Завдання №3</h3>
+                    <iframe id="html-source" src="Task3/index.html" frameborder="0"></iframe>
+                    <pre>
+                        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;title&gt;Task 3&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main&gt;
+        &lt;div class="banner"&gt;
+            &lt;img src="images/519-5191896_pofolio-website-html-css-javascript-logo-png-transparent.png" alt="HTML CSS"&gt;
+        &lt;/div&gt;
+        &lt;div class="info"&gt;
+            &lt;h2&gt;SdSdaksdj sdsds&lt;/h2&gt;
+            &lt;div class="price"&gt;
+                &lt;p class="old"&gt;1.232 uah&lt;/p&gt;
+                &lt;p class="new"&gt;999 uah&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="adv fir"&gt;
+                &lt;svg class="adv-icon" viewBox="0 0 20 20"&gt;
+                    &lt;path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"&gt;&lt;/path&gt;
+                &lt;/svg&gt;
+                Sdasdaf asdasdagas
+            &lt;/div&gt;
+            &lt;div class="adv sec"&gt;
+                &lt;svg class="adv-icon" viewBox="0 0 20 20"&gt;
+                    &lt;path d="M10.25,2.375c-4.212,0-7.625,3.413-7.625,7.625s3.413,7.625,7.625,7.625s7.625-3.413,7.625-7.625S14.462,2.375,10.25,2.375M10.651,16.811v-0.403c0-0.221-0.181-0.401-0.401-0.401s-0.401,0.181-0.401,0.401v0.403c-3.443-0.201-6.208-2.966-6.409-6.409h0.404c0.22,0,0.401-0.181,0.401-0.401S4.063,9.599,3.843,9.599H3.439C3.64,6.155,6.405,3.391,9.849,3.19v0.403c0,0.22,0.181,0.401,0.401,0.401s0.401-0.181,0.401-0.401V3.19c3.443,0.201,6.208,2.965,6.409,6.409h-0.404c-0.22,0-0.4,0.181-0.4,0.401s0.181,0.401,0.4,0.401h0.404C16.859,13.845,14.095,16.609,10.651,16.811 M12.662,12.412c-0.156,0.156-0.409,0.159-0.568,0l-2.127-2.129C9.986,10.302,9.849,10.192,9.849,10V5.184c0-0.221,0.181-0.401,0.401-0.401s0.401,0.181,0.401,0.401v4.651l2.011,2.008C12.818,12.001,12.818,12.256,12.662,12.412"&gt;&lt;/path&gt;
+                &lt;/svg&gt;
+                Sgfkpo Ifkdlfdlf
+            &lt;/div&gt;
+            &lt;div class="text"&gt;
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+            &lt;/div&gt;
+            &lt;div class="btn"&gt;
+                &lt;button&gt;Buy &rarr;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="benefits"&gt;
+                &lt;div class="point"&gt;
+                    &lt;svg class="svg-icon" viewBox="0 0 20 20"&gt;
+                        &lt;path fill="currentColor" d="M4.423,9.141H3.565c-0.237,0-0.429,0.192-0.429,0.429s0.192,0.429,0.429,0.429h0.858c0.237,0,0.429-0.192,0.429-0.429S4.66,9.141,4.423,9.141 M6.997,16.861H6.139c-0.237,0-0.429,0.192-0.429,0.43s0.192,0.429,0.429,0.429h0.858c0.237,0,0.429-0.191,0.429-0.429S7.234,16.861,6.997,16.861 M4.423,16.861H3.565c-0.237,0-0.429,0.192-0.429,0.43s0.192,0.429,0.429,0.429h0.858c0.237,0,0.429-0.191,0.429-0.429S4.66,16.861,4.423,16.861M13.861,9.998h0.857c0.236,0,0.429-0.192,0.429-0.429s-0.192-0.429-0.429-0.429h-0.857c-0.237,0-0.43,0.192-0.43,0.429S13.624,9.998,13.861,9.998 M14.719,16.861h-0.857c-0.237,0-0.43,0.192-0.43,0.43s0.192,0.429,0.43,0.429h0.857c0.236,0,0.429-0.191,0.429-0.429S14.955,16.861,14.719,16.861 M15.576,13.001c-0.236,0-0.429,0.192-0.429,0.43c0,0.236,0.192,0.429,0.429,0.429c0.237,0,0.43-0.192,0.43-0.429C16.006,13.193,15.813,13.001,15.576,13.001 M6.997,9.141H6.139c-0.237,0-0.429,0.192-0.429,0.429s0.192,0.429,0.429,0.429h0.858c0.237,0,0.429-0.192,0.429-0.429S7.234,9.141,6.997,9.141M12.145,9.141h-0.857c-0.236,0-0.429,0.192-0.429,0.429s0.193,0.429,0.429,0.429h0.857c0.237,0,0.43-0.192,0.43-0.429S12.382,9.141,12.145,9.141 M17.722,10.856V7.424c0-0.948-0.769-1.716-1.716-1.716h-0.617l-1.038-3.873c-0.245-0.916-1.186-1.458-2.101-1.213L3.592,2.912C2.676,3.157,2.133,4.098,2.378,5.014l0.186,0.695H2.278c-0.947,0-1.716,0.768-1.716,1.716V17.72c0,0.947,0.769,1.716,1.716,1.716h13.728c0.947,0,1.716-0.769,1.716-1.716v-1.716c0.947,0,1.716-0.769,1.716-1.716v-1.716C19.438,11.624,18.669,10.856,17.722,10.856 M16.006,6.566c0.473,0,0.857,0.384,0.857,0.858v0.238c-0.253-0.146-0.544-0.238-0.857-0.238h-0.157l-0.229-0.858H16.006z M14.41,5.372l0.55,2.053H6.67L14.41,5.372z M3.814,3.741l8.657-2.29c0.458-0.123,0.928,0.149,1.051,0.607l0.222,0.828L3.43,5.621l-0.223-0.83C3.084,4.333,3.356,3.863,3.814,3.741M1.42,7.424c0-0.474,0.384-0.858,0.858-0.858h0.517l0.229,0.858H2.278c-0.314,0-0.605,0.091-0.858,0.238V7.424z M16.863,17.72c0,0.474-0.385,0.858-0.857,0.858H2.278c-0.474,0-0.858-0.385-0.858-0.858V9.141c0-0.474,0.384-0.858,0.858-0.858h13.728c0.473,0,0.857,0.384,0.857,0.858v1.715h-1.716c-0.947,0-1.716,0.768-1.716,1.716v1.716c0,0.947,0.769,1.716,1.716,1.716h1.716V17.72z M18.58,14.288c0,0.474-0.385,0.857-0.858,0.857h-2.574c-0.474,0-0.857-0.384-0.857-0.857v-1.716c0-0.474,0.384-0.858,0.857-0.858h2.574c0.474,0,0.858,0.385,0.858,0.858V14.288z M9.571,16.861H8.713c-0.237,0-0.429,0.192-0.429,0.43s0.192,0.429,0.429,0.429h0.858c0.236,0,0.429-0.191,0.429-0.429S9.808,16.861,9.571,16.861M12.145,16.861h-0.857c-0.236,0-0.429,0.192-0.429,0.43s0.193,0.429,0.429,0.429h0.857c0.237,0,0.43-0.191,0.43-0.429S12.382,16.861,12.145,16.861 M9.571,9.141H8.713c-0.237,0-0.429,0.192-0.429,0.429s0.192,0.429,0.429,0.429h0.858C9.808,9.998,10,9.806,10,9.569S9.808,9.141,9.571,9.141"&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                    Skgofkop ;dfsdfsfd
+                &lt;/div&gt;
+                &lt;div class="point"&gt;
+                    &lt;svg class="svg-icon" viewBox="0 0 20 20"&gt;
+                        &lt;path fill="currentColor" d="M17.671,13.945l0.003,0.002l1.708-7.687l-0.008-0.002c0.008-0.033,0.021-0.065,0.021-0.102c0-0.236-0.191-0.428-0.427-0.428H5.276L4.67,3.472L4.665,3.473c-0.053-0.175-0.21-0.306-0.403-0.306H1.032c-0.236,0-0.427,0.191-0.427,0.427c0,0.236,0.191,0.428,0.427,0.428h2.902l2.667,9.945l0,0c0.037,0.119,0.125,0.217,0.239,0.268c-0.16,0.26-0.257,0.562-0.257,0.891c0,0.943,0.765,1.707,1.708,1.707S10,16.068,10,15.125c0-0.312-0.09-0.602-0.237-0.855h4.744c-0.146,0.254-0.237,0.543-0.237,0.855c0,0.943,0.766,1.707,1.708,1.707c0.944,0,1.709-0.764,1.709-1.707c0-0.328-0.097-0.631-0.257-0.891C17.55,14.182,17.639,14.074,17.671,13.945 M15.934,6.583h2.502l-0.38,1.709h-2.312L15.934,6.583zM5.505,6.583h2.832l0.189,1.709H5.963L5.505,6.583z M6.65,10.854L6.192,9.146h2.429l0.19,1.708H6.65z M6.879,11.707h2.027l0.189,1.709H7.338L6.879,11.707z M8.292,15.979c-0.472,0-0.854-0.383-0.854-0.854c0-0.473,0.382-0.855,0.854-0.855s0.854,0.383,0.854,0.855C9.146,15.596,8.763,15.979,8.292,15.979 M11.708,13.416H9.955l-0.189-1.709h1.943V13.416z M11.708,10.854H9.67L9.48,9.146h2.228V10.854z M11.708,8.292H9.386l-0.19-1.709h2.512V8.292z M14.315,13.416h-1.753v-1.709h1.942L14.315,13.416zM14.6,10.854h-2.037V9.146h2.227L14.6,10.854z M14.884,8.292h-2.321V6.583h2.512L14.884,8.292z M15.978,15.979c-0.471,0-0.854-0.383-0.854-0.854c0-0.473,0.383-0.855,0.854-0.855c0.473,0,0.854,0.383,0.854,0.855C16.832,15.596,16.45,15.979,15.978,15.979 M16.917,13.416h-1.743l0.189-1.709h1.934L16.917,13.416z M15.458,10.854l0.19-1.708h2.218l-0.38,1.708H15.458z"&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                    Lsjdks iadjsskd
+                &lt;/div&gt;
+                &lt;div class="point"&gt;
+                    &lt;svg class="svg-icon" viewBox="0 0 20 20"&gt;
+                        &lt;path fill="currentColor" d="M17.125,1.375H2.875c-0.828,0-1.5,0.672-1.5,1.5v11.25c0,0.828,0.672,1.5,1.5,1.5H7.75v2.25H6.625c-0.207,0-0.375,0.168-0.375,0.375s0.168,0.375,0.375,0.375h6.75c0.207,0,0.375-0.168,0.375-0.375s-0.168-0.375-0.375-0.375H12.25v-2.25h4.875c0.828,0,1.5-0.672,1.5-1.5V2.875C18.625,2.047,17.953,1.375,17.125,1.375z M11.5,17.875h-3v-2.25h3V17.875zM17.875,14.125c0,0.414-0.336,0.75-0.75,0.75H2.875c-0.414,0-0.75-0.336-0.75-0.75v-1.5h15.75V14.125z M17.875,11.875H2.125v-9c0-0.414,0.336-0.75,0.75-0.75h14.25c0.414,0,0.75,0.336,0.75,0.75V11.875z M10,14.125c0.207,0,0.375-0.168,0.375-0.375S10.207,13.375,10,13.375s-0.375,0.168-0.375,0.375S9.793,14.125,10,14.125z"&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                    Lsjdks iadjsskd
+                &lt;/div&gt;
+                &lt;div class="point"&gt;
+                    &lt;svg class="svg-icon" viewBox="0 0 20 20"&gt;
+                        &lt;path fill="currentColor" d="M8.652,16.404c-0.186,0-0.337,0.151-0.337,0.337v2.022c0,0.186,0.151,0.337,0.337,0.337s0.337-0.151,0.337-0.337v-2.022C8.989,16.555,8.838,16.404,8.652,16.404z"&gt;&lt;/path&gt;
+                        &lt;path fill="currentColor" d="M11.348,16.404c-0.186,0-0.337,0.151-0.337,0.337v2.022c0,0.186,0.151,0.337,0.337,0.337s0.337-0.151,0.337-0.337v-2.022C11.685,16.555,11.535,16.404,11.348,16.404z"&gt;&lt;/path&gt;
+                        &lt;path fill="currentColor" d="M17.415,5.281V4.607c0-2.224-1.847-4.045-4.103-4.045H10H6.687c-2.256,0-4.103,1.82-4.103,4.045v0.674H10H17.415z"&gt;&lt;/path&gt;
+                        &lt;path fill="currentColor" d="M18.089,10.674V7.304c0,0,0-0.674-0.674-0.674V5.955H10H2.585v0.674c-0.674,0-0.674,0.674-0.674,0.674v3.371c-0.855,0.379-1.348,1.084-1.348,2.022c0,1.253,2.009,3.008,2.009,3.371c0,2.022,1.398,3.371,3.436,3.371c0.746,0,1.43-0.236,1.98-0.627c-0.001-0.016-0.009-0.03-0.009-0.047v-2.022c0-0.372,0.303-0.674,0.674-0.674c0.301,0,0.547,0.201,0.633,0.474h0.041v-0.137c0-0.372,0.303-0.674,0.674-0.674s0.674,0.302,0.674,0.674v0.137h0.041c0.086-0.273,0.332-0.474,0.633-0.474c0.371,0,0.674,0.302,0.674,0.674v2.022c0,0.016-0.008,0.03-0.009,0.047c0.55,0.391,1.234,0.627,1.98,0.627c2.039,0,3.436-1.348,3.436-3.371c0-0.362,2.009-2.118,2.009-3.371C19.438,11.758,18.944,11.053,18.089,10.674z M5.618,18.089c-0.558,0-1.011-0.453-1.011-1.011s0.453-1.011,1.011-1.011s1.011,0.453,1.011,1.011S6.177,18.089,5.618,18.089z M6.629,13.371H5.474c-0.112,0-0.192-0.061-0.192-0.135c0-0.074,0.08-0.151,0.192-0.174l1.156-0.365V13.371z M8.652,12.521c-0.394,0.163-0.774,0.366-1.148,0.55c-0.061,0.03-0.132,0.052-0.2,0.076v-0.934c0.479-0.411,0.906-0.694,1.348-0.879V12.521z M5.281,10c-1.348,0-1.348-2.696-1.348-2.696h5.393C9.326,7.304,6.629,10,5.281,10z M10.674,12.296c-0.22-0.053-0.444-0.084-0.674-0.084s-0.454,0.032-0.674,0.084v-1.168C9.539,11.086,9.762,11.06,10,11.05c0.238,0.01,0.461,0.036,0.674,0.078V12.296z M12.696,13.146c-0.068-0.024-0.14-0.046-0.2-0.076c-0.374-0.184-0.754-0.386-1.148-0.55v-1.188c0.442,0.185,0.87,0.467,1.348,0.879V13.146zM14.382,18.089c-0.558,0-1.011-0.453-1.011-1.011s0.453-1.011,1.011-1.011c0.558,0,1.011,0.453,1.011,1.011S14.94,18.089,14.382,18.089z M13.371,13.371v-0.674l1.156,0.365c0.112,0.022,0.192,0.099,0.192,0.174c0,0.074-0.08,0.135-0.192,0.135H13.371z M14.719,10c-1.348,0-4.045-2.696-4.045-2.696h5.393C16.067,7.304,16.067,10,14.719,10z"&gt;&lt;/path&gt;
+                        &lt;path fill="currentColor" d="M10,16.067c-0.186,0-0.337,0.151-0.337,0.337V19.1c0,0.186,0.151,0.337,0.337,0.337s0.337-0.151,0.337-0.337v-2.696C10.337,16.218,10.186,16.067,10,16.067z"&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                    Lsjdks iadjsskd
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+    &lt;section&gt;
+        &lt;div class="courses"&gt;
+            &lt;div class="course"&gt;
+                &lt;div class="image"&gt;&lt;/div&gt;
+                &lt;div class="title"&gt;
+                    First course
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="course"&gt;
+                &lt;div class="image"&gt;&lt;/div&gt;
+                &lt;div class="title"&gt;
+                    Second course
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="course"&gt;
+                &lt;div class="image"&gt;&lt;/div&gt;
+                &lt;div class="title"&gt;
+                    Third course
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="course"&gt;
+                &lt;div class="image"&gt;&lt;/div&gt;
+                &lt;div class="title"&gt;
+                    Fourth course
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+        &lt;div class="help"&gt;
+            &lt;div class="name"&gt;Help&lt;/div&gt;
+            &lt;hr&gt;
+            &lt;div class="content"&gt;
+                &lt;p&gt;ASdsdsd&lt;/p&gt;
+                &lt;p&gt;Okdfjk&lt;/p&gt;
+                &lt;p&gt;Udkfslkk&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="contact"&gt;
+            &lt;div class="name"&gt;Contacts&lt;/div&gt;
+            &lt;hr&gt;
+            &lt;div class="content"&gt;
+                &lt;svg class="svg-icon" viewBox="0 0 20 20"&gt;
+                    &lt;path fill="currentColor" d="M17.051,3.302H2.949c-0.866,0-1.567,0.702-1.567,1.567v10.184c0,0.865,0.701,1.568,1.567,1.568h14.102c0.865,0,1.566-0.703,1.566-1.568V4.869C18.617,4.003,17.916,3.302,17.051,3.302z M17.834,15.053c0,0.434-0.35,0.783-0.783,0.783H2.949c-0.433,0-0.784-0.35-0.784-0.783V4.869c0-0.433,0.351-0.784,0.784-0.784h14.102c0.434,0,0.783,0.351,0.783,0.784V15.053zM15.877,5.362L10,9.179L4.123,5.362C3.941,5.245,3.699,5.296,3.581,5.477C3.463,5.659,3.515,5.901,3.696,6.019L9.61,9.86C9.732,9.939,9.879,9.935,10,9.874c0.121,0.062,0.268,0.065,0.39-0.014l5.915-3.841c0.18-0.118,0.232-0.36,0.115-0.542C16.301,5.296,16.059,5.245,15.877,5.362z"&gt;&lt;/path&gt;
+                &lt;/svg&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="partners"&gt;
+            &lt;div class="name"&gt;Partners&lt;/div&gt;
+            &lt;hr&gt;
+            &lt;div class="content"&gt;
+                &lt;img src="images/Nova_Poshta_2014_logo.svg" alt="Nova poshta"&gt;
+                &lt;img src="images/privat-logo.jpg" alt="Privat"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="safety"&gt;
+            &lt;div class="name"&gt;Safety&lt;/div&gt;
+            &lt;hr&gt;
+            &lt;div class="content"&gt;
+                &lt;p&gt;DHskdkl jdsalkjdlajd hdsjhya agdd adhsadhakd;aks dk;asdk;asdkla;sdk ads ;adk;laskdhfbasdgjgajdsg dasgd&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;   
+                        </code>
+                    </pre>
+                    <pre>
+                        <code>
+* {
+    box-sizing: border-box;
+    margin: 0;
+	padding: 0;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.banner {   
+    width: 50%;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.info {
+    width: 50%;
+    padding: 20px 20px 20px 50px
+}
+
+.price {
+    padding: 10px 0px 20px 0px;
+}
+
+.price > p {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.price .old {
+    color: blue;
+    text-decoration: line-through;
+    vertical-align: top;
+}
+
+.price .new {
+    color: red;
+    font-size: 1.4em;
+}
+
+.adv-icon {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.adv, .point {
+    display: flex;
+    align-items: center;
+
+}
+
+.info .fir {
+    color: green;
+}
+
+.info .sec {
+    color: orange;
+}
+
+.text {
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+.btn {
+    max-width: 500px;
+    padding-top: 20px;
+}
+
+.btn button {
+    color: #fff;
+    background-color: red;
+    border: none;
+    width: 100%;
+    height: 35px;
+    font-weight: bold;
+}
+
+.svg-icon {
+    color: #000;
+    width: 50px;
+    padding-right: 20px;
+}
+
+.benefits {
+    padding: 20px 0px 0px 60px;
+}
+
+.point {
+    padding-bottom: 20px;
+}
+
+.courses {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px 20px 0px 20px;
+}
+
+.course .image {
+    height: 200px;
+    width: 200px;
+    background-color: royalblue;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.help, .contact, .partners, .safety {
+    width: 250px;
+}
+
+.content {
+    padding-top: 10px;
+    font-size: 0.9em;
+    color: rgb(87, 88, 90);
+}
+
+footer > div {
+    margin-top: 10px;
+}
+
+.partners .content {
+    vertical-align: top;
+}
+
+.partners img {
+    width: 100px;
+}
+
+hr {
+    border-color: rgb(201, 201, 201, 0.4);
+}
+
+.name {
+    margin-bottom: 10px;
+}
+                        </code>
+                    </pre>
                 </div>
                 <div id="lab3-conclusion">
                     <h3>Висновки</h3>
@@ -425,15 +792,89 @@ time, mark, audio, video {
                 <ul>
                     <li>
                         <p>
-                            <a href="#"></a>
+                            <a href="#lab4-purpose">Постановка задачі лабораторної роботи №4</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab4-js-usage">Способи функціонального застосування JavaScript</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab4-js-usage">Схема URL</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab4-event-handler">Обробник подій</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab4-entity">Підстановка (entity)</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab4-scipt">Вставка (тег script)</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab4-arrays">Масиви (4 пункт)</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab4-task-6">Виконання 6 пункту</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab4-conslusion">Висновки</a>
                         </p>
                     </li>
                 </ul>
             </div>
             <div class="content">
-                4
+                <div id="lab4-purpose">
+                    <h3>Постановка задачі лабораторної роботи №4</h3>
+                    <p>Тема:  ФУНКЦІОНАЛЬНЕ ЗАСТОСУВАННЯ JAVASCRIPT У HTML-ДОКУМЕНТІ. КЛАСИ,ОБ’ЄКТИ, ФУНКЦІЇ,  В МОВІ JAVASCRIPT. ПОДІЇ ТА ОБРОБКА ПОДІЙ. ПРОГРАМНА ВЗАЄМОДІЯ З HTML ДОКУМЕНТАМИ НА ОСНОВІ DOM АРІ</p>
+                    <p>Мета: придбати практичні навички роботи маніпулювання інформаційним вмістом Web-документа засобами мови JavasSript, використання об’єктів,масивів, функцій, подій, обробників подій у сценаріях на мові JavasSript</p>
+                </div>
+                <div id="lab4-js-usage">
+                    <h3>Способи функціонального застосування JavaScript</h3>
+                    <h4>Схема URL</h4>
+                </div>
+                <div id="lab4-event-handler">
+                    <h4>Обробник подій</h4>
+                </div>
+                <div id="lab4-entity">
+                    <h4>Підстановка (entity)</h4>
+                </div>
+                <div id="lab4-scipt">
+                    <h4>Вставка (тег script)</h4>
+                </div>
+                <div id="lab4-arrays">
+                    <h3>Масиви (4 пункт)</h3>
+                </div>
+                <div id="lab4-task-6">
+                    <h3>Виконання 6 пункту</h3>
+                </div>
+                <div id="lab4-conslusion">
+                    <h3>Висновки</h3>
+                </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
         <div id="lab5" class="content-block">
             <div class="side-menu">
                 <ul>
