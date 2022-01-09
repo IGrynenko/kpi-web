@@ -782,11 +782,6 @@ hr {
                 </div>
             </div>
         </div>
-
-
-
-
-
         <div id="lab4" class="content-block">
             <div class="side-menu">
                 <ul>
@@ -846,23 +841,350 @@ hr {
                 <div id="lab4-js-usage">
                     <h3>Способи функціонального застосування JavaScript</h3>
                     <h4>Схема URL</h4>
+                    <pre>
+                        <code>
+&lt;a href="JavaScript: alert('From an a element')"&gt;Some link&lt;/a&gt;
+                        </code>
+                    </pre>
                 </div>
                 <div id="lab4-event-handler">
                     <h4>Обробник подій</h4>
+                    <pre>
+                        <code>
+&lt;button onclick="JavaScript: window.location.href = 'http://www.google.com';"&gt;Go to google&lt;/button&gt;
+                        </code>
+                    </pre>
                 </div>
                 <div id="lab4-entity">
                     <h4>Підстановка (entity)</h4>
+                    <pre>
+                        <code>
+&lt;input type="text" value="&{document.getElementById('title').value};"&gt;
+                        </code>
+                    </pre>
                 </div>
                 <div id="lab4-scipt">
                     <h4>Вставка (тег script)</h4>
+                    <pre>
+                        <code>
+&lt;h1 id="title"&gt;Title&lt;/h1&gt;
+
+
+
+&lt;script&gt;
+    function changeColor() {
+
+        document.getElementById('title').style.color = 'green';
+    }
+
+    changeColor();
+&lt;/script&gt;
+                        </code>
+                    </pre>
                 </div>
                 <div id="lab4-arrays">
                     <h3>Масиви (4 пункт)</h3>
+                    <pre>
+                        <code>
+const input = [1, 32, 2, 5, 18, 22, 33];
+const output = sorting(input);
+
+console.log('Задача 4')
+console.log('Input: ' + input);
+console.log('Output: ' + output);
+
+const sorted = [...input];
+quickSort(sorted, 0, input.length - 1);
+
+console.log('Задача 6')
+console.log('Input: ' + input);
+console.log('Output: ' + sorted);
+
+function sorting(arr) {
+
+    if (!arr || !Array.isArray(arr))
+        throw new Error('Not array');
+
+    if (arr.length < 2)
+        return arr;
+
+    const divisionByTwo = [];
+    const divisionByThree = [];
+    const divisionByTwoAndThree = [];
+
+    for (let index = 0; index < arr.length; index++) {
+
+        const element = arr[index];
+        
+        if (element % 2 === 0 && element % 3 === 0)
+            divisionByTwoAndThree.push(element);
+
+        else if (element % 2 === 0)
+            divisionByTwo.push(element);
+
+        else if (element % 3 === 0)
+            divisionByThree.push(element);
+    }
+
+    return [...divisionByTwoAndThree, ...divisionByTwo, ...divisionByThree];
+}
+
+function quickSort(arr, start, end) {
+
+    if (start >= end)
+        return;
+    
+    const index = partition(arr, start, end);
+    
+    quickSort(arr, start, index - 1);
+    quickSort(arr, index + 1, end);
+}
+
+function partition(arr, start, end) {
+
+    const pivotValue = arr[end];
+    let pivotIndex = start;
+
+    for (let i = start; i < end; i++) {
+
+        if (arr[i] < pivotValue) {
+
+            [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+            pivotIndex++;
+        }
+    }
+    
+    [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]];
+
+    return pivotIndex;
+};
+
+
+
+array.js:4 Задача 4
+array.js:5 Input: 1,32,2,5,18,22,33
+array.js:6 Output: 18,32,2,22,33
+array.js:11 Задача 6
+array.js:12 Input: 1,32,2,5,18,22,33
+array.js:13 Output: 1,2,5,18,22,32,33
+                        </code>
+                    </pre>
                 </div>
                 <div id="lab4-task-6">
                     <h3>Виконання 6 пункту</h3>
+                    <iframe id="html-source" src="Lab4/index.html" frameborder="0"></iframe>
+                    suggestion.js
+                    <pre>
+                        <code>
+import { words } from './dictionary.js';
+
+const input = document.getElementById('task6');
+const sugg = document.getElementById('suggestion');
+
+let previousWord = '';
+
+const keyUpHandler = debounce((e) => wordSuggestion(e), 250);
+
+input.addEventListener('keyup', keyUpHandler);
+
+(function init() {
+    
+    const dic = document.getElementById('dic');
+
+    let allWords = '';
+
+    for (let index = 0; index < words.length; index++) {
+
+        const word = words[index];
+        allWords += word;
+
+        if (index !== words.length - 1)
+            allWords += ', ';
+    }
+
+    dic.innerText = allWords;
+})()
+
+function wordSuggestion(e) {
+
+    if (previousWord === input.value)
+        return;
+
+    if (!input.value) {
+        togleSuggDisplay(false);
+        previousWord = '';
+        return;
+    }      
+
+    const wordsInDic = lookForWord(input.value);
+
+    if (wordsInDic.length > 0) {
+        createSuggestions(wordsInDic);
+        togleSuggDisplay(true);
+    }
+
+    else togleSuggDisplay(false);
+
+    previousWord = input.value;
+}
+
+function debounce(func, wait, immediate) {
+
+	let timeout;
+
+	return function() {
+
+		let context = this, args = arguments;
+		clearTimeout(timeout);
+
+		timeout = setTimeout(() => {
+			timeout = null;
+
+			if (!immediate)
+                func.apply(context, args);
+                
+		}, wait);
+
+		if (immediate && !timeout)
+            func.apply(context, args);
+	};
+}
+
+function createSuggestions(arr) {
+
+    removeAllChildren(sugg);
+
+    for (let index = 0; index < arr.length; index++) {
+
+        const word = arr[index];
+        let p = document.createElement('p');
+        p.innerText = word;
+        sugg.appendChild(p);
+    }
+}
+
+function removeAllChildren(node) {
+
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
+    }
+}
+
+function lookForWord(input) {
+
+    const result = [];
+
+    for (let index = 0; index < words.length; index++) {
+        
+        const word = words[index];
+
+        if (word.includes(input))
+            result.push(word); 
+    }
+
+    return result;
+}
+
+function togleSuggDisplay(display) {
+
+    if (display)
+        sugg.style.display = 'block';
+    
+    else sugg.style.display = 'none';
+}
+                        </code>
+                    </pre>
+                    dictionary.js
+                    <pre>
+                        <code>
+export const words = [
+    'регіон',
+    'глава',
+    'співробітник',
+    'авторитет',
+];
+                        </code>
+                    </pre>
                 </div>
                 <div id="lab4-conslusion">
+                    <h3>Висновки</h3>
+                </div>
+            </div>
+        </div>
+        <div id="lab5" class="content-block">
+            <div class="side-menu">
+                <ul>
+                    <li>
+                        <p>
+                            <a href="#lab5-purpose">Тема та постановка задачі лабораторної роботи №5</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab5-dynamic-elements">Динамічні елементи 3 пункту</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab5-unite-gallery">Галерея UniteGallery</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab5-unite-gallery">Фотогалерея</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab5-photo-slider">Слайдер фотографій</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab5-video-slider">Слайдер відеоматеріалів</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab5-social-btn">Кнопки соціальних мерерж</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab5-informers">Інформери</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab5-conclusion">Висновки</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div id="lab5-purpose">
+                    <h3>Тема та постановка задачі лабораторної роботи №5</h3>
+                </div>
+                <div id="lab5-dynamic-elements">
+                    <h3>Динамічні елементи 3 пункту</h3>
+                </div>
+                <div id="lab5-unite-gallery">
+                    <h3>Галерея UniteGallery</h3>
+                    <h4>Фотогалерея</h4>
+                </div>
+                <div id="lab5-photo-slider">
+                    <h4>Слайдер фотографій</h4>
+                </div>
+                <div id="lab5-video-slider">
+                    <h4>Слайдер відеоматеріалів</h4>
+                </div>
+                <div id="lab5-social-btn">
+                    <h3>Кнопки соціальних мерерж</h3>
+                </div>
+                <div id="lab5-informers">
+                    <h3>Інформери</h3>
+                </div>
+                <div id="lab5-conclusion">
                     <h3>Висновки</h3>
                 </div>
             </div>
@@ -871,11 +1193,7 @@ hr {
 
 
 
-
-
-
-
-        <div id="lab5" class="content-block">
+        <div id="lab6" class="content-block">
             <div class="side-menu">
                 <ul>
                     <li>
@@ -883,15 +1201,41 @@ hr {
                             <a href="#"></a>
                         </p>
                     </li>
-                </ul>
-            </div>
-            <div class="content">
-                5
-            </div>
-        </div>
-        <div id="lab6" class="content-block">
-            <div class="side-menu">
-                <ul>
+                    <li>
+                        <p>
+                            <a href="#"></a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#"></a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#"></a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#"></a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#"></a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#"></a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#"></a>
+                        </p>
+                    </li>
                     <li>
                         <p>
                             <a href="#"></a>
