@@ -1,0 +1,12 @@
+.accordion {
+    width: 500px;
+}
+
+.ui-menu {
+    width: 150px;
+}
+
+label {
+    display: inline-block;
+    width: 5em;
+}
