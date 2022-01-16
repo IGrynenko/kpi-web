@@ -24,6 +24,7 @@ main {
     display: flex;
     flex-direction: row;
     gap: 15px;
+    margin: 0px 10px;
 }
 
 h1 {
@@ -40,6 +41,11 @@ h1 {
 form {
     display: flex;
     flex-direction: row;
+    gap: 10px;
+}
+
+form label, form select {
+    margin: 5px 0px;
 }
 
 .labels, .selects {
