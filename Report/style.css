@@ -114,6 +114,11 @@ nav ul li {
 
 nav ul li:hover {
     cursor: pointer;
+    background-color: rgb(70 70 70);;
+}
+
+.side-menu a:hover {
+    color: rgb(70 70 70);;
 }
 
 nav ul li p {

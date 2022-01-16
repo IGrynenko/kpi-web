@@ -1467,7 +1467,7 @@ app.listen(3010, () => console.log('Server ready'));
                     </li>
                     <li>
                         <p>
-                            <a href="#">Робота з БД в Node.js</a>
+                            <a href="#lab7-nodejs">Робота з БД в Node.js</a>
                         </p>
                     </li>
                 </ul>
@@ -1561,18 +1561,230 @@ CREATE TABLE Programs
 	IsActive BIT NOT NULL DEFAULT(1),
 	Created DATETIME NOT NULL
 )
+
+GO
+
+INSERT INTO Audience VALUES
+(NEWID(), 'Family', GETDATE()),
+(NEWID(), 'Kids', GETDATE()),
+(NEWID(), 'Adults', GETDATE()),
+(NEWID(), 'Teens', GETDATE())
+
+GO
+
+INSERT INTO Genres VALUES
+(NEWID(), 'Action', GETDATE()),
+(NEWID(), 'News', GETDATE()),
+(NEWID(), 'Comedy', GETDATE()),
+(NEWID(), 'Science', GETDATE())
+
+GO
+
+INSERT INTO Languages VALUES
+(NEWID(), 'Ukrainian', GETDATE()),
+(NEWID(), 'English', GETDATE())
+
+GO
+
+INSERT INTO Programs VALUES
+(
+	NEWID(),
+	'Global news',
+	'News from around the world',
+	(SELECT Id from Genres WHERE Type = 'News'), 
+	(SELECT Id from Audience WHERE Type = 'Adults'), 
+	(SELECT Id from Languages WHERE Type = 'Ukrainian'), 
+	90,
+	1,
+	GETDATE()
+),
+(
+	NEWID(),
+	'Die Hard',
+	'A movie about a badass cop',
+	(SELECT Id from Genres WHERE Type = 'Action'), 
+	(SELECT Id from Audience WHERE Type = 'Adults'), 
+	(SELECT Id from Languages WHERE Type = 'Ukrainian'), 
+	90,
+	1,
+	GETDATE()
+),
+(
+	NEWID(),
+	'Rick and Morty',
+	'A cartoon about a scientist and his grandson',
+	(SELECT Id from Genres WHERE Type = 'Comedy'), 
+	(SELECT Id from Audience WHERE Type = 'Teens'), 
+	(SELECT Id from Languages WHERE Type = 'Ukrainian'), 
+	90,
+	1,
+	GETDATE()
+),
+(
+	NEWID(),
+	'Euro news',
+	'News from Europe',
+	(SELECT Id from Genres WHERE Type = 'News'), 
+	(SELECT Id from Audience WHERE Type = 'Family'), 
+	(SELECT Id from Languages WHERE Type = 'English'), 
+	90,
+	1,
+	GETDATE()
+),
+(
+	NEWID(),
+	'Les contes de la rue Broca',
+	'Anthology of fairy tales written by Pierre Gripari',
+	(SELECT Id from Genres WHERE Type = 'Comedy'), 
+	(SELECT Id from Audience WHERE Type = 'Kids'), 
+	(SELECT Id from Languages WHERE Type = 'Ukrainian'), 
+	90,
+	1,
+	GETDATE()
+)
                         </code>
                     </pre>
                 </div>
-                <div id="lab7-">
-                    
+                <div id="lab7-nodejs">
+                    <h3>Робота з БД в Node.js</h3>
+                    server.js
+                    <pre>
+                        <code>
+const express = require('express');
+const router = express.Router();
+const parser = require('body-parser');
+const cors = require('cors');
+const programService = require('./programService');
+const Program = require('./program');
+const app = express();
+
+app.use(cors());
+app.use(parser.json());
+app.use('/api', router);
+
+router.route('/programs').get(async (req, res) => {
+    
+    const result = await programService.getAllPrograms();
+    res.send(result[0]);
+});
+
+router.route('/programs/:title').get(async (req, res) => {
+    
+    const title = req.params.title;
+
+    if (!title)
+        res.status(400)
+            .json({ status: 400, message: 'Title is required'})
+
+    const result = await programService.getProgram(title);
+
+    if (!result[0] || result[0].length === 0)
+        res.sendStatus(404);
+
+    res.send(result[0]);
+});
+
+router.route('/programs').put(async (req, res) => {
+
+    if (!req.body) 
+        res.status(400)
+            .json({ status: 400, message: 'Body is required'})
+
+    const program = {...req.body};
+    const existingProgram = await programService.getProgram(program.Id);
+
+    if (existingProgram.length === 0)
+        res.status(404)
+            .json({ status: 404, message: 'Such program doesn\'t exist'});
+
+    await programService.updateProgram(program);
+
+    res.sendStatus(204);
+});
+
+app.listen(3010, () => console.log('Server ready'));
+                        </code>
+                    </pre>
+                    programService.js
+                    <pre>
+                        <code>
+const config = require('./config.json');
+const sql = require('mssql');
+
+async function getAllPrograms() {
+
+    try {
+        const pool = await sql.connect(config.db);
+        const program = await pool.request()
+            .query('select * from Programs where IsActive = 1');
+        
+        return program.recordsets;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function getProgram(title) {
+    
+    try {
+        if (title) {
+            const pool = await sql.connect(config.db);
+            const program = await pool.request()
+                .input('title_parameter', sql.NVarChar, title)
+                .query('select * from Programs where Title = @title_parameter and IsActive = 1');
+            
+            return program.recordsets;
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function updateProgram(program) {
+    
+    try {
+        if (program) {
+
+            const pool = await sql.connect(config.db);
+            const genreQuery = await pool.request()
+                .input('id_parameter', sql.UniqueIdentifier, program.Genre)
+                .query('select * from Genres where Id = @id_parameter');
+
+            const genre = genreQuery.recordsets[0][0];
+            
+            await pool.request()
+                .input('id_parameter', sql.UniqueIdentifier, program.Id)
+                .input('title_parameter', sql.NVarChar, program.Title)
+                .input('description_parameter', sql.NVarChar, program.Description)
+                .input('genre_parameter', sql.UniqueIdentifier, genre.Id)
+                .input('audience_parameter', sql.UniqueIdentifier, program.Audience)
+                .input('language_parameter', sql.UniqueIdentifier, program.Language)
+                .input('duration_parameter', sql.Decimal, program.Duration)
+                .input('isActive_parameter', sql.Bit, program.IsActive)
+                .input('created_parameter', sql.DateTime, program.Created)
+                .query(`update Programs set Title=@title_parameter, Description=@description_parameter, Genre=@genre_parameter,
+                        Audience=@audience_parameter, Language=@language_parameter, Duration=@duration_parameter,
+                        IsActive=@isActive_parameter, Created=@created_parameter 
+                        where Id=@id_parameter`);
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {
+    getAllPrograms: getAllPrograms,
+    getProgram: getProgram,
+    updateProgram: updateProgram
+}
+                        </code>
+                    </pre>
                 </div>
             </div>
         </div>
-
-        
-
-
         <div id="lab8" class="content-block">
             <div class="side-menu">
                 <ul>
@@ -1590,6 +1802,11 @@ CREATE TABLE Programs
         <div id="lab9" class="content-block">
             <div class="side-menu">
                 <ul>
+                    <li>
+                        <p>
+                            <a href="#"></a>
+                        </p>
+                    </li>
                     <li>
                         <p>
                             <a href="#"></a>
