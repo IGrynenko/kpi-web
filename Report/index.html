@@ -1222,6 +1222,11 @@ export const words = [
                             <a href="#lab6-nodejs">Node.js сервер</a>
                         </p>
                     </li>
+                    <li>
+                        <p>
+                            <a href="#lab6-task3-page">Сторінка Task 3 index.html</a>
+                        </p>
+                    </li>
                 </ul>
             </div>
             <div class="content">
@@ -1230,7 +1235,7 @@ export const words = [
                     <p>Тема: WEB-СЕРВЕРИ ТА ПРИНЦИПИ ЇХ РОБОТИ З КОРИСТУВАЧЕМ. СЕРВЕРНІ WEB-ЗАСТОСУВАННЯ.</p>
                     <p>Мета: придбати практичні навички встановлення та конфігурування WEB-сервера, встановлення та налаштування Node.js.</p>
                 </div>
-                <div class="lab6-nodejs-settings">
+                <div id="lab6-nodejs-settings">
                     <h3>Node.js налаштування сервера</h3>
                     <pre>
                         <code>
@@ -1254,7 +1259,7 @@ export const words = [
                         </code>
                     </pre>
                 </div>
-                <div class="lab6-lab6-nodejs">
+                <div id="lab6-lab6-nodejs">
                     <h3>Node.js сервер</h3>
                     <pre>
                         <code>
@@ -1279,26 +1284,295 @@ app.listen(3010, () => console.log('Server ready'));
                         </code>
                     </pre>
                 </div>
+                <div id="lab6-task3-page">
+                    <h3>Сторінка Task 3 index.html</h3>
+                    <pre>
+                        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Lab 6&lt;/title&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="accordion"&gt;
+        &lt;h3&gt;Accordion&lt;/h3&gt;
+        &lt;div id="accordion"&gt;
+            &lt;h3&gt;Section 1&lt;/h3&gt;
+            &lt;div&gt;
+              &lt;p&gt;
+              Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+              ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+              amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+              odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+              &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;h3&gt;Section 2&lt;/h3&gt;
+            &lt;div&gt;
+              &lt;p&gt;
+              Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+              purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+              velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+              suscipit faucibus urna.
+              &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;h3&gt;Section 3&lt;/h3&gt;
+            &lt;div&gt;
+              &lt;p&gt;
+              Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+              Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+              ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+              lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+              &lt;/p&gt;
+              &lt;ul&gt;
+                &lt;li&gt;List item one&lt;/li&gt;
+                &lt;li&gt;List item two&lt;/li&gt;
+                &lt;li&gt;List item three&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;h3&gt;Section 4&lt;/h3&gt;
+            &lt;div&gt;
+              &lt;p&gt;
+              Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+              et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+              faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+              mauris vel est.
+              &lt;/p&gt;
+              &lt;p&gt;
+              Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+              Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+              inceptos himenaeos.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;h3&gt;Datepicker&lt;/h3&gt;
+        &lt;div&gt;
+            &lt;p&gt;Date: &lt;input type="text" id="datepicker"&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;h3&gt;Menu&lt;/h3&gt;
+        &lt;div&gt;
+            &lt;ul id="menu"&gt;
+                &lt;li class="ui-state-disabled"&gt;&lt;div&gt;Toys (n/a)&lt;/div&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;div&gt;Books&lt;/div&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;div&gt;Clothing&lt;/div&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;div&gt;Electronics&lt;/div&gt;
+                  &lt;ul&gt;
+                    &lt;li class="ui-state-disabled"&gt;&lt;div&gt;Home Entertainment&lt;/div&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;div&gt;Car Hifi&lt;/div&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;div&gt;Utilities&lt;/div&gt;&lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;div&gt;Movies&lt;/div&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;div&gt;Music&lt;/div&gt;
+                  &lt;ul&gt;
+                    &lt;li&gt;&lt;div&gt;Rock&lt;/div&gt;
+                      &lt;ul&gt;
+                        &lt;li&gt;&lt;div&gt;Alternative&lt;/div&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;div&gt;Classic&lt;/div&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;div&gt;Jazz&lt;/div&gt;
+                      &lt;ul&gt;
+                        &lt;li&gt;&lt;div&gt;Freejazz&lt;/div&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;div&gt;Big Band&lt;/div&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;div&gt;Modern&lt;/div&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;div&gt;Pop&lt;/div&gt;&lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li class="ui-state-disabled"&gt;&lt;div&gt;Specials (n/a)&lt;/div&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;h3&gt;Slider&lt;/h3&gt;
+        &lt;div id="slider"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;h3&gt;Tabs&lt;/h3&gt;
+        &lt;div id="tabs"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#tabs-1"&gt;Nunc tincidunt&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#tabs-2"&gt;Proin dolor&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#tabs-3"&gt;Aenean lacinia&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div id="tabs-1"&gt;
+                &lt;p&gt;Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div id="tabs-2"&gt;
+                &lt;p&gt;Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div id="tabs-3"&gt;
+                &lt;p&gt;Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.&lt;/p&gt;
+                &lt;p&gt;Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;h3&gt;Tooltip&lt;/h3&gt;
+        &lt;p&gt;&lt;label for="age"&gt;Your age:&lt;/label&gt;&lt;input id="age" title="We ask for your age only for statistical purposes."&gt;&lt;/p&gt;
+        &lt;p&gt;Hover the field to see the tooltip.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code>
+                    </pre>
+                </div>
             </div>
         </div>
-
-
-
-
         <div id="lab7" class="content-block">
             <div class="side-menu">
                 <ul>
                     <li>
                         <p>
-                            <a href="#"></a>
+                            <a href="#lab7-purpose">Тема та постановка задачі лабораторної роботи №7</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab7-individual">Індивідуальне завдання</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            > <a href="#lab7-classes">Класи об’єктів предметної області</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            > <a href="#lab7-info-model">Інфологічна модель</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            > <a href="#lab7-dato-model">Датологічна модель</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#lab7-implementation">Реалізація БД в MS SQL</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="#">Робота з БД в Node.js</a>
                         </p>
                     </li>
                 </ul>
             </div>
             <div class="content">
-                7
+                <div id="lab7-purpose">
+                    <h3>Тема та постановка задачі лабораторної роботи №7</h3>
+                    <p>Тема: ВЗАЄМОДІЯ WEB-ЗАСТОСУВАНЬ З СИСТЕМОЮ КЕРУВАННЯ БАЗАМИ ДАНИХ (СКБД). ОБРОБКА РЕЗУЛЬТАТІВ SQL-ЗАПИТІВ У PHP-СЦЕНАРІЇ.</p>
+                    <p>Мета: придбати практичні навички підключення до СКБД, вибора бази даних, виконання запиту, отримання результатів, відключення від СКБД.</p>
+                </div>
+                <div id="lab7-individual">
+                    <h3>Індивідуальне завдання</h3>
+                    <div>Індивідуальне завдання №9 - Програма передач для телебачення</div>
+                </div>
+                <div id="lab7-classes">
+                    <h4>Класи об’єктів предметної області</h4>
+                    <div>Плануються наступні класи:</div>
+                    <ol>
+                        <li>Програми (Programs)</li>
+                        <li>Аудиторія (Audience)</li>
+                        <li>Жанри (Genres)</li>
+                        <li>Мови (Languages)</li>
+                    </ol>
+                </div>
+                <div id="lab7-info-model">
+                    <h4>Інфологічна модель</h4>
+                    <div class="img-container">
+                        <img src="images/db_scheme.png" alt="Інфологічна модель">
+                    </div>
+                </div>
+                <div id="lab7-dato-model">
+                    <h4>Датологічна модель</h4>
+                    <div class="img-container">
+                        <img src="images/db_scheme_final.png" alt="Датологічна модель">
+                    </div>
+                </div>
+                <div id="lab7-implementation">
+                    <h3>Реалізація БД в MS SQL</h3>
+                    <pre>
+                        <code>
+CREATE DATABASE TvPrograms
+
+GO
+
+USE TvPrograms
+
+GO
+
+CREATE TABLE Languages
+(
+	Id UNIQUEIDENTIFIER PRIMARY KEY,
+	[Type] NVARCHAR(100) NOT NULL,
+	Created DATETIME NOT NULL
+)
+
+GO
+
+CREATE TABLE Audience
+(
+	Id UNIQUEIDENTIFIER PRIMARY KEY,
+	[Type] NVARCHAR(100) NOT NULL,
+	Created DATETIME NOT NULL
+)
+
+GO
+
+CREATE TABLE Genres
+(
+	Id UNIQUEIDENTIFIER PRIMARY KEY,
+	[Type] NVARCHAR(100) NOT NULL,
+	Created DATETIME NOT NULL
+)
+
+GO
+
+CREATE TABLE Programs
+(
+	Id UNIQUEIDENTIFIER PRIMARY KEY,
+	[Type] NVARCHAR(100) NOT NULL,
+	[Description] NVARCHAR(100) NULL,
+	Genre UNIQUEIDENTIFIER NULL FOREIGN KEY REFERENCES Genres(Id)
+		ON UPDATE CASCADE
+		ON DELETE SET NULL,
+	Audience UNIQUEIDENTIFIER NULL FOREIGN KEY REFERENCES Audience(Id)
+		ON UPDATE CASCADE
+		ON DELETE SET NULL,
+	[Language] UNIQUEIDENTIFIER NULL FOREIGN KEY REFERENCES Languages(Id)
+		ON UPDATE CASCADE
+		ON DELETE SET NULL,
+	[Duration] DECIMAL(5,2) NOT NULL,
+	IsActive BIT NOT NULL DEFAULT(1),
+	Created DATETIME NOT NULL
+)
+                        </code>
+                    </pre>
+                </div>
+                <div id="lab7-">
+                    
+                </div>
             </div>
         </div>
+
+        
+
+
         <div id="lab8" class="content-block">
             <div class="side-menu">
                 <ul>
