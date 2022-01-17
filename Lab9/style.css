@@ -41,6 +41,7 @@ h1 {
 form {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -51,4 +52,5 @@ form label, form select {
 .labels, .selects {
     display: flex;
     flex-direction: column;
+    width: 45%;
 }

@@ -41,16 +41,24 @@ async function updateProgram(program) {
             const genreQuery = await pool.request()
                 .input('id_parameter', sql.UniqueIdentifier, program.Genre)
                 .query('select * from Genres where Id = @id_parameter');
+            const audienceQuery = await pool.request()
+                .input('id_parameter', sql.UniqueIdentifier, program.Audience)
+                .query('select * from Audience where Id = @id_parameter');
+            const languageQuery = await pool.request()
+                .input('id_parameter', sql.UniqueIdentifier, program.Language)
+                .query('select * from Languages where Id = @id_parameter');
 
             const genre = genreQuery.recordsets[0][0];
+            const audience = id_parameter.recordsets[0][0];
+            const language = languageQuery.recordsets[0][0];
             
             await pool.request()
                 .input('id_parameter', sql.UniqueIdentifier, program.Id)
                 .input('title_parameter', sql.NVarChar, program.Title)
                 .input('description_parameter', sql.NVarChar, program.Description)
                 .input('genre_parameter', sql.UniqueIdentifier, genre.Id)
-                .input('audience_parameter', sql.UniqueIdentifier, program.Audience)
-                .input('language_parameter', sql.UniqueIdentifier, program.Language)
+                .input('audience_parameter', sql.UniqueIdentifier, audience.Id)
+                .input('language_parameter', sql.UniqueIdentifier, language.Id)
                 .input('duration_parameter', sql.Decimal, program.Duration)
                 .input('isActive_parameter', sql.Bit, program.IsActive)
                 .input('created_parameter', sql.DateTime, program.Created)

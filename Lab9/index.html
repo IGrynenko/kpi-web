@@ -22,7 +22,7 @@
         <div class="settings">
             <div>SETTINGS</div>
             <hr>
-            <form method="POST">
+            <form method="POST" onsubmit="test();return false;">
                 <div class="labels">
                     <label for="font">Select font</label>
                     <label for="font-size">Select font size</label>
@@ -48,6 +48,9 @@
                         <option value="aliceblue">aliceblue</option>
                         <option value="beige">beige</option>
                     </select>
+                </div>
+                <div>
+                    <button type="submit">Save</button>
                 </div>
             </form>
         </div>
