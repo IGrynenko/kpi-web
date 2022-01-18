@@ -4,10 +4,14 @@ const router = express.Router();
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 app.use(cors());
 app.use(express.static(__dirname + '/pages'));
 app.disable('etag');
+app.use(jsonParser);
+app.use('/', router);
 
 router.get('/', (req, res) => {
 
@@ -24,11 +28,28 @@ router.get('/settings', (req, res) => {
         }
         
         const settings = JSON.parse(data);
+        
+        res.setHeader('Content-Type', 'application/json');
         res.status(200)
             .send(settings)
     })
 });
 
-app.use('/', router);
+
+router.post('/settings', (req, res) => {
+
+    if (req.body.constructor === Object && Object.keys(req.body).length === 0)
+        res.sendStatus(400)
+            .json({ message: 'No body', status: 400 });
+
+    const settings = {...req.body};
+
+    fs.writeFile('user-settings.json', JSON.stringify(settings), (err) => {
+
+        if (err) console.log(err);
+
+        res.sendStatus(204);
+    });
+});
 
 app.listen(3010, () => console.log('Server ready'));
