@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Звіт</title>
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -1249,21 +1249,25 @@ export const words = [
                     <pre>
                         <code>
 {
-    "name": "Lab6",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "cors": "^2.8.5",
-        "express": "^4.17.2"
-    }
+  "name": "Lab6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
                         </code>
                     </pre>
@@ -1277,17 +1281,30 @@ const app = express();
 const router = express.Router();
 const cors = require('cors');
 const path = require('path');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 app.use(cors());
+app.use(jsonParser);
+app.use('/', router);
 app.use(express.static(__dirname + '/pages/Task3'));
-
 
 router.get('/', (req, res) => {
 
     res.sendFile(path.join(__dirname+'/pages/Task3/index.html'));
 });
 
-app.use('/', router);
+router.post('/form', (req, res) => {
+
+    var body = req.body;
+
+    if (body) {
+
+        console.log(body.input);
+        var date = Date.now();
+        res.json({date: date});
+    }
+});
 
 app.listen(3010, () => console.log('Server ready'));
                         </code>
@@ -1433,6 +1450,18 @@ app.listen(3010, () => console.log('Server ready'));
         &lt;h3&gt;Tooltip&lt;/h3&gt;
         &lt;p&gt;&lt;label for="age"&gt;Your age:&lt;/label&gt;&lt;input id="age" title="We ask for your age only for statistical purposes."&gt;&lt;/p&gt;
         &lt;p&gt;Hover the field to see the tooltip.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="form"&gt;
+    &lt;h3&gt;Form&lt;/h3&gt;
+        &lt;form onsubmit="test(event)" id="hello-form"&gt;
+            &lt;div&gt;
+            &lt;label for="hello"&gt;Hello&lt;/label&gt;
+            &lt;input type="text" name="hello" id="hello" placeholder="hello"&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+            &lt;button type="submit"&gt;Submit&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -1666,9 +1695,10 @@ const cors = require('cors');
 const programService = require('./programService');
 const Program = require('./program');
 const app = express();
+const jsonParser = parser.json()
 
 app.use(cors());
-app.use(parser.json());
+app.use(jsonParser);
 app.use('/api', router);
 
 router.route('/programs').get(async (req, res) => {
@@ -1693,20 +1723,18 @@ router.route('/programs/:title').get(async (req, res) => {
     res.send(result[0]);
 });
 
-router.route('/programs').put(async (req, res) => {
+router.route('/programs').post(async (req, res) => {
 
     if (!req.body) 
         res.status(400)
             .json({ status: 400, message: 'Body is required'})
 
+    console.log(req.body);
+
     const program = {...req.body};
-    const existingProgram = await programService.getProgram(program.Id);
+    const newProgram = await programService.createProgram(program);
 
-    if (existingProgram.length === 0)
-        res.status(404)
-            .json({ status: 404, message: 'Such program doesn\'t exist'});
-
-    await programService.updateProgram(program);
+    console.log(newProgram);
 
     res.sendStatus(204);
 });
@@ -1719,6 +1747,8 @@ app.listen(3010, () => console.log('Server ready'));
                         <code>
 const config = require('./config.json');
 const sql = require('mssql');
+const guid = require('uuid');
+const datetime = require('node-datetime');
 
 async function getAllPrograms() {
 
@@ -1748,6 +1778,30 @@ async function getProgram(title) {
     }
     catch (error) {
         console.log(error);
+    }
+}
+
+async function createProgram(program) {
+
+    try {
+        if (program) {
+
+            const pool = await sql.connect(config.db);
+            await pool.request()
+                .input('id', sql.UniqueIdentifier, guid.v4())
+                .input('title', sql.NVarChar, program.title)
+                .input('description', sql.NVarChar, program.descr)
+                .input('genre', sql.UniqueIdentifier, program.genre)
+                .input('audience', sql.UniqueIdentifier, program.audience)
+                .input('language', sql.UniqueIdentifier, program.language)
+                .input('duration', sql.Decimal, Number.parseFloat(program.duration) ?? 0)
+                .input('isActive', sql.Bit, 1)
+                .input('created', sql.DateTime, new Date())
+                .query('insert into Programs values(@id, @title, @description, @genre, @audience, @language, @duration, @isActive, @created)');
+        }
+    }
+    catch (error) {
+        console.log(error)
     }
 }
 
@@ -1795,10 +1849,69 @@ async function updateProgram(program) {
 module.exports = {
     getAllPrograms: getAllPrograms,
     getProgram: getProgram,
-    updateProgram: updateProgram
+    updateProgram: updateProgram,
+    createProgram: createProgram
 }
                         </code>
                     </pre>
+                </div>
+                <div>
+                    <h3>Run server</h3>
+                    <div class="requests">
+                        <div class="request-block">
+                            <button id="get-all-btn" class="server-btn">Get all programs</button>
+                            <div id="all-tv-programs"></div>
+                        </div>
+                        <hr>
+                        <div class="request-block">
+                            <form>
+                                <div>
+                                    <label for="get-title">Title</label>
+                                    <input type="text" id="get-title" name="get-title">
+                                </div>
+                            </form>
+                            <button id="get-specific-btn" class="server-btn">Get program</button>
+                            <div id="specific-tv-program"></div>
+                        </div>
+                        <hr>
+                        <div class="request-block">
+                            <form id="submit-form">
+                                <div class="form-labels">
+                                    <label for="create-title">Title</label>
+                                    <label for="create-descr">Description</label>
+                                    <label for="create-genre">Genre</label>
+                                    <label for="create-audience">Audience</label>
+                                    <label for="create-language">Language</label>
+                                    <label for="create-duration">Duration</label>
+                                </div>
+                                <div class="form-inputs">
+                                    <input type="text" id="create-title" name="title">
+                                    <input type="text" id="create-descr" name="descr">
+                                    <select name="genre" id="create-genre">
+                                        <option value="">--Please choose an option--</option>
+                                        <option value="1">Comedy</option>
+                                        <option value="2">News</option>
+                                        <option value="3">Action</option>
+                                        <option value="4">Science</option>
+                                    </select>
+                                    <select name="audience" id="create-audience">
+                                        <option value="">--Please choose an option--</option>
+                                        <option value="1">Adults</option>
+                                        <option value="2">Family</option>
+                                        <option value="3">Teens</option>
+                                        <option value="4">Kids</option>
+                                    </select>
+                                    <select name="language" id="create-language">
+                                        <option value="">--Please choose an option--</option>
+                                        <option value="1">English</option>
+                                        <option value="2">Ukrainian</option>
+                                    </select>
+                                    <input type="text" id="create-duration" name="duration">
+                                </div>
+                            </form>
+                            <button id="add-program-btn" class="server-btn" type="submit">Add program</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1843,6 +1956,9 @@ module.exports = {
                 </div>
                 <div id="lab9-individual">
                     <h3>Індивідуальне завдання №9</h3>
+                    <div class="img-container" style="padding-bottom: 30px;">
+                        <img src="./images/Lab9.png" alt="Lab 9">
+                    </div>
                     main.js
                     <pre>
                         <code>

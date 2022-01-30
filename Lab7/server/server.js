@@ -5,9 +5,10 @@ const cors = require('cors');
 const programService = require('./programService');
 const Program = require('./program');
 const app = express();
+const jsonParser = parser.json()
 
 app.use(cors());
-app.use(parser.json());
+app.use(jsonParser);
 app.use('/api', router);
 
 router.route('/programs').get(async (req, res) => {
@@ -32,20 +33,18 @@ router.route('/programs/:title').get(async (req, res) => {
     res.send(result[0]);
 });
 
-router.route('/programs').put(async (req, res) => {
+router.route('/programs').post(async (req, res) => {
 
     if (!req.body) 
         res.status(400)
             .json({ status: 400, message: 'Body is required'})
 
+    console.log(req.body);
+
     const program = {...req.body};
-    const existingProgram = await programService.getProgram(program.Id);
+    const newProgram = await programService.createProgram(program);
 
-    if (existingProgram.length === 0)
-        res.status(404)
-            .json({ status: 404, message: 'Such program doesn\'t exist'});
-
-    await programService.updateProgram(program);
+    console.log(newProgram);
 
     res.sendStatus(204);
 });

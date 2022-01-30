@@ -238,6 +238,71 @@ pre code span {
     background-color: darkgrey;
 }
 
+#all-tv-programs, #specific-tv-program {
+    padding-top: 20px;
+}
+
+.requests table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.requests table, th, td {
+    border: 1px solid #eee;
+}
+
+.requests td {
+    padding: 10px;
+    width: 50%;
+}
+
+.request-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.request-block form {
+    padding: 20px 0px;
+}
+
+.server-btn {
+    width: 150px;
+    height: 30px;
+    background-color: #eee;
+    border: none;
+}
+
+.server-btn:hover {
+    background-color: rgb(201, 201, 201);
+}
+
+#submit-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.form-labels, .form-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-labels {
+    width: 100px;
+}
+
+.form-labels > label {
+    padding: 5px 0px;
+}
+
+.form-inputs {
+    width: 200px;
+}
+
+.form-inputs > * {
+    margin: 3px 0px;
+}
+
 /* ----- RESIZING ------ */
 
 @media only screen and (max-width: 1020px) {

@@ -1,5 +1,7 @@
 const config = require('./config.json');
 const sql = require('mssql');
+const guid = require('uuid');
+const datetime = require('node-datetime');
 
 async function getAllPrograms() {
 
@@ -29,6 +31,30 @@ async function getProgram(title) {
     }
     catch (error) {
         console.log(error);
+    }
+}
+
+async function createProgram(program) {
+
+    try {
+        if (program) {
+
+            const pool = await sql.connect(config.db);
+            await pool.request()
+                .input('id', sql.UniqueIdentifier, guid.v4())
+                .input('title', sql.NVarChar, program.title)
+                .input('description', sql.NVarChar, program.descr)
+                .input('genre', sql.UniqueIdentifier, program.genre)
+                .input('audience', sql.UniqueIdentifier, program.audience)
+                .input('language', sql.UniqueIdentifier, program.language)
+                .input('duration', sql.Decimal, Number.parseFloat(program.duration) ?? 0)
+                .input('isActive', sql.Bit, 1)
+                .input('created', sql.DateTime, new Date())
+                .query('insert into Programs values(@id, @title, @description, @genre, @audience, @language, @duration, @isActive, @created)');
+        }
+    }
+    catch (error) {
+        console.log(error)
     }
 }
 
@@ -76,5 +102,6 @@ async function updateProgram(program) {
 module.exports = {
     getAllPrograms: getAllPrograms,
     getProgram: getProgram,
-    updateProgram: updateProgram
+    updateProgram: updateProgram,
+    createProgram: createProgram
 }

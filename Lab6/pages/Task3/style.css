@@ -10,3 +10,8 @@ label {
     display: inline-block;
     width: 5em;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+}
